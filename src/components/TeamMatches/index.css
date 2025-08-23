@@ -1,0 +1,20 @@
+/* Write your CSS here */
+.team-matches-container {
+  background-color: #161625;
+  min-height: 100vh;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.team-banner {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.match-cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  gap: 16px;
+}

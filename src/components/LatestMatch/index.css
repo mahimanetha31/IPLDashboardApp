@@ -1,0 +1,36 @@
+/* Write your CSS here */
+.latest-match-container {
+  margin-bottom: 30px;
+}
+
+.latest-match-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.latest-match-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.left, .right {
+  flex: 1;
+}
+
+.team-name, .date, .venue, .result {
+  margin-bottom: 10px;
+}
+
+.label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.competing-logo {
+  width: 100px;
+  height: 100px;
+  align-self: center;
+}
