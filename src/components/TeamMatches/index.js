@@ -50,9 +50,54 @@ class TeamMatches extends Component {
     secondInnings: match.second_innings,
     matchStatus: match.match_status,
   })
+  renderPieChart = () => {
+    const {latestMatch, recentMatches} = this.state
+    const totalMatches = recentMatches.length + 1
+    const wonCount =
+      recentMatches.filter(match => match.matchStatus === 'Won').length +
+      (latestMatch.matchStatus === 'Won' ? 1 : 0)
+    const lostCount =
+      recentMatches.filter(match => match.matchStatus === 'Lost').length +
+      (latestMatch.matchStatus === 'Lost' ? 1 : 0)
+    const drawnCount = totalMatches - wonCount - lostCount
+    const pieData = [
+      {name: 'Won', value: wonCount},
+      {name: 'Lost', value: lostCount},
+      {name: 'Drawn', value: drawnCount},
+    ]
+    const COLORS = ['#4caf50', '#f44336', '#ffeb3b']
 
+    return (
+      <div className="pie-chart-container">
+        <h2 className="pie-chart-heading">Match Statisitics</h2>
+        <PieChart width={300} height={200}>
+          <Pie
+            data={pieData}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+            label={({name, percent}) =>
+              `${name}: ${(percent * 100).toFixed(0)}%`
+            }
+          >
+            {pieData.map((entry, index) => (
+              <Cell key={entry.name} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Legend />
+        </PieChart>
+      </div>
+    )
+  }
   render() {
     const {teamBannerUrl, latestMatch, recentMatches, isLoading} = this.state
+    const {history} = this.props
+
+    const goBack = () => {
+      history.push('/')
+    }
     return (
       <div className="team-matches-container">
         {isLoading ? (
@@ -61,6 +106,13 @@ class TeamMatches extends Component {
           </div>
         ) : (
           <div>
+           <div className="back-button-container">
+              <Link to="/">
+                <button type="button" onClick={goBack} className="back-button">
+                  Back
+                </button>
+              </Link>
+            </div>
             <img
               src={teamBannerUrl}
               alt="team banner"
