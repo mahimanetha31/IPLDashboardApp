@@ -18,3 +18,42 @@
   padding: 0;
   gap: 16px;
 }
+.back-button-container {
+  margin-bottom: 20px;
+}
+.back-button {
+  padding: 10px 20px;
+  background: #3a2575;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #512da8;
+}
+.pie-chart-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.pie-chart-heading {
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.recharts-legend-item {
+  color: #ffffff !important;
+}
+.recharts-pie-label {
+  fill: #ffffff !important;
+  font-weight: bold;
+}
